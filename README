@@ -17,13 +17,18 @@ Warning tem_download_link megaupload.com/xyz
 
 Assim:
 pergunta = "Qual o ano do album Nevermind?"
-#> album.nevermind > ano.x
+#> sujeito = nevermind > predicado = ano > objeto = x
 resposta = 1991
 
 Portanto, toda pergunta válida deve prover pelo menos dois termos entre o sujeito-objeto-predicado, o termo sem correspondência é o termo-pergunta a ser descoberto entre os fatos do RDF.
 
 == Arquivos
-consulta_natural.rb é o interpretador que gera a consultas ao RDF a partir da pergunta.
+consulta_natural.rb é o interpretador que gera consultas ao RDF a partir do texto da pergunta.
 agente_conversa.rb permite usar o interpretador como um usuário no GTalk/Jabber.
-consulta_console.rb é um console UNIX-like para consultas em linguagem natural.
+consulta_console.rb é um console UNIX-like para as consultas em linguagem natural.
+
+=== TO DO
+- multiwords parsing
+- multiresources parsing
+- sparql?
 
