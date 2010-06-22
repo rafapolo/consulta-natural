@@ -1,1 +1,29 @@
-teste v0.1
+== Consulta-Natural
+Semântica é o estudo do significado.
+O conhecimento é um grafo entre informações, que por sua vez, é constituída por dados.
+Um arquivo no padrão RDF (Resource Description Framework) é uma modelagem conceitual de informações.
+A linguagem natural, tal como falamos, permite criar e navegar entre diferentes significados.
+
+Consulta-Natural tenta mapear a relação entre as palavras de uma consulta nesse repositório, possibilitando inferir o sentido da pergunta.
+
+Para tal, a ontologia mapeada no .RDF deve seguir como a descrição de fatos.
+Fato é uma triade sujeito-objeto-predicado.
+
+Supondo um repositório de álbuns, todos os sujeitos são álbuns.
+
+Nevermind é_de_ano 1991
+In Rainbows é_da_banda Radiohead
+Warning tem_link http://megaupload.com/xyz 
+
+Assim:
+pergunta = "Qual o ano do album Nevermind?"
+#> album.nevermind > ano.x
+resposta = 1991
+
+Portanto, toda pergunta válida deve prover pelo menos dois termos entre o sujeito-objeto-predicado, o termo sem correspondência é o termo-pergunta a ser descoberto entre os fatos do RDF.
+
+== Arquivos
+consulta_natural.rb é o interpretador que gera a consultas ao RDF a partir da pergunta.
+agente_conversa.rb permite usar o interpretador como um usuário no GTalk/Jabber.
+consulta_console.rb é um console UNIX-like para consultas em linguagem natural.
+
