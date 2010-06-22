@@ -13,7 +13,7 @@ Supondo um repositório de álbuns, todos os sujeitos são álbuns.
 
 Nevermind é_de_ano 1991
 In Rainbows é_da_banda Radiohead
-Warning tem_link http://megaupload.com/xyz 
+Warning tem_download_link megaupload.com/xyz 
 
 Assim:
 pergunta = "Qual o ano do album Nevermind?"
