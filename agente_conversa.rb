@@ -7,9 +7,9 @@ include Jabber
 Jabber::debug = true
 
 # conectar
-client = Client.new(JID::new("agente@baixogavea.com"))
+client = Client.new(JID::new("joao.descentro@gmail.com"))
 client.connect
-client.auth("*****")
+client.auth("12joao13")
 client.send(Presence.new.set_type(:available))
 roster = Roster::Helper.new(client)
 
@@ -22,10 +22,12 @@ end
 # responder
 client.add_message_callback do |m|
   if m.body && consulta = ConsultaNatural.interpreta(m.body)
-    resposta = ConsultaNatural.responde(consulta).to_s
-    msg = Message::new(m.from, resposta.to_s)
-    msg.type=:chat
-    client.send(msg)
+    respostas = ConsultaNatural.responde(consulta)
+    respostas.each do |resposta|
+      msg = Message::new(m.from, resposta.to_s)
+      msg.type=:chat
+      client.send(msg)
+    end
   end
 end
 

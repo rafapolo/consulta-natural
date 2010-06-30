@@ -65,8 +65,8 @@ class ConsultaNatural
           if sujeito==nil
             resposta << fato.subject
           end
-          if predicado==nil
-            resposta << fato.predicate.to_s
+          if predicado==nil          
+            resposta << "Sim." if !fato.predicate.to_s.empty?
           end
           if objeto==nil
             resposta << fato.object.to_s
