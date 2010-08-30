@@ -30,11 +30,19 @@ class ConsultaNatural
   def self.interpreta(pergunta)
     consulta = {}
     if self.pergunta?(pergunta)
-      #break_line
-      #puts "Pergunta: #{pergunta}"
       break_line
-      pergunta.chop.split(" ").each do |token|
-        if semlabel = self.semantic_label(token)
+      # pega tokens compostos
+      tokens_compostos = pergunta.scan(/"([\w\s]+)"/)
+      # retira compostos
+      pergunta.gsub!(/"[\w\s]+"/, "")
+      # tokens
+      tokens_simples = pergunta.chop.split(" ")
+      puts tokens_simples
+      puts tokens_compostos
+      tokens = tokens_simples + tokens_compostos
+      # para cada token
+      tokens.each do |token|
+        if semlabel = self.semantic_label(token.to_s)
           consulta[semlabel.keys.to_s.intern] = semlabel.values if semlabel
         else
           puts "token: #{token}"
@@ -94,14 +102,6 @@ class ConsultaNatural
       return {:subject=>uri_token}
     end
 
-    #predicado
-    uri_token = RDF::URI.new(@ns+'#'+token)
-    if @graph.has_predicate?(uri_token)
-      # sinonimos ?
-      puts "predicado: Album.#{token}" if Album.properties.include?(token.intern)
-      return {:predicate=>uri_token}
-    end
-
     #objeto
     if @graph.has_object?(token)
       # todos os predicados/atributos com esse token/valor são os mesmos?
@@ -115,6 +115,17 @@ class ConsultaNatural
       end
       return {:object=>token}
     end
+
+    #predicado
+    if token.index(" ")==nil #namespace não pode ter espaço
+      uri_token = RDF::URI.new(@ns+'#'+token)
+      if @graph.has_predicate?(uri_token)
+        # sinonimos ?
+        puts "predicado: Album.#{token}" if Album.properties.include?(token.intern)
+        return {:predicate=>uri_token}
+      end
+    end
+
   end
 
 end
