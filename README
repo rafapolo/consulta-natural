@@ -1,34 +1,26 @@
-== Consulta-Natural
-Semântica é o estudo do significado.
-O conhecimento é um grafo entre informações, que por sua vez, é constituída por dados.
-Um arquivo no padrão RDF (Resource Description Framework) é uma modelagem conceitual de informações.
-A linguagem natural, tal como falamos, permite criar e navegar entre diferentes significados.
+# Natural Query (Consulta-Natural)
 
-Consulta-Natural tenta mapear a relação entre as palavras de uma consulta nesse repositório, possibilitando inferir o sentido da pergunta.
+**Semantics** is the study of meaning.  
+**Knowledge** can be represented as a graph of information, which in turn is composed of data.  
+An **RDF file (Resource Description Framework)** provides a conceptual model of information.  
+**Natural language**, as spoken by humans, allows for the creation and navigation of multiple layers of meaning.
 
-Para tal, a ontologia mapeada no .RDF deve seguir como a descrição de fatos.
-Fato é uma triade sujeito-objeto-predicado.
+**Natural Query (Consulta-Natural)** attempts to map the relationships between the words of a query within a repository, making it possible to infer the intended meaning of the question.
 
-Supondo um repositório de álbuns, todos os sujeitos são álbuns.
+To achieve this, the ontology mapped in the `.RDF` file must serve as a description of facts.  
+A **fact** is defined as a subject–predicate–object triple.
 
-Nevermind é_de_ano 1991
-In Rainbows é_da_banda Radiohead
-Warning tem_download_link megaupload.com/xyz 
+---
 
-Assim:
-pergunta = "Qual o ano do album Nevermind?"
-#> sujeito = nevermind > predicado = ano > objeto = x
-resposta = 1991
+## Example
 
-Portanto, toda pergunta válida deve prover pelo menos dois termos entre o sujeito-objeto-predicado, o termo sem correspondência é o termo-pergunta a ser descoberto entre os fatos do RDF.
+Suppose we have a repository of music albums. All subjects are albums:
 
-== Arquivos
-consulta_natural.rb é o interpretador que gera consultas ao RDF a partir do texto da pergunta.
-agente_conversa.rb permite usar o interpretador como um usuário no GTalk/Jabber.
-consulta_console.rb é um console UNIX-like para as consultas em linguagem natural.
+- *Nevermind* → `is_from_year` → **1991**  
+- *In Rainbows* → `is_by_band` → **Radiohead**  
+- *Warning* → `has_download_link` → **megaupload.com/xyz**
 
-=== TO DO
-- multiwords parsing
-- multiresources parsing
-- sparql?
+Now, consider the following question:
 
+```txt
+Question = "What is the year of the album Nevermind?"
