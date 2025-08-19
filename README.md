@@ -10,10 +10,6 @@ An **RDF file (Resource Description Framework)** provides a conceptual model of 
 To achieve this, the ontology mapped in the `.RDF` file must serve as a description of facts.  
 A **fact** is defined as a subject–predicate–object triple.
 
----
-
-## Example
-
 Suppose we have a repository of music albums. All subjects are albums:
 
 - *Nevermind* → `is_from_year` → **1991**  
@@ -24,3 +20,18 @@ Now, consider the following question:
 
 ```txt
 Question = "What is the year of the album Nevermind?"
+subject = Nevermind
+predicate = year
+object = ?
+```
+
+Thus, every valid query must provide at least two terms among subject–predicate–object.
+The missing element is the query-term, which is then inferred from the facts in the RDF model.
+
+Files
+- consulta_natural.rb → Interpreter that generates RDF queries from natural language questions.
+- agente_conversa.rb → Enables the interpreter to function as a user within GTalk/Jabber.
+- consulta_console.rb → A UNIX-like console for natural language queries.
+
+---
+Rafael Polo, 2010
