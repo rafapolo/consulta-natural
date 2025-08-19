@@ -1,11 +1,15 @@
 # Natural Query (Consulta-Natural)
 
-**Semantics** is the study of meaning.  
-**Knowledge** can be represented as a graph of information, which in turn is composed of data.  
-An **RDF file (Resource Description Framework)** provides a conceptual model of information.  
-**Natural language**, as spoken by humans, allows for the creation and navigation of multiple layers of meaning.
+PT-BR -> https://github.com/rafapolo/consulta-natural/wiki
 
 **Natural Query (Consulta-Natural)** attempts to map the relationships between the words of a query within a repository, making it possible to infer the intended meaning of the question.
+
+---
+- **Semantics** is the study of meaning.  
+- **Knowledge** can be represented as a graph of information, which in turn is composed of data.  
+- A **RDF file (Resource Description Framework)** provides a conceptual model of information.  
+- **Natural language**, as spoken by humans, allows for the creation and navigation of multiple layers of meaning.
+
 
 To achieve this, the ontology mapped in the `.RDF` file must serve as a description of facts.  
 A **fact** is defined as a subject–predicate–object triple.
@@ -32,6 +36,13 @@ Files
 - consulta_natural.rb → Interpreter that generates RDF queries from natural language questions.
 - agente_conversa.rb → Enables the interpreter to function as a user within GTalk/Jabber.
 - consulta_console.rb → A UNIX-like console for natural language queries.
+
+Reference:
+```txt
+Natural Language Query System for RDF Repositories
+Nokia Research Center Cambridge, 2007
+Proceedings of the Seventh International Symposium on Natural Language Processing, SNLP
+```
 
 ---
 Rafael Polo, 2010
